@@ -14,7 +14,7 @@
 import asyncore
 import socket
 import struct
-import timeit
+import time
 
 #Raspberry pie IP address
 #UDP_IP = "172.30.144.154"
@@ -37,13 +37,13 @@ class AsyncoreServerUDP(asyncore.dispatcher):
 	# This is called everytime there is something to read
 	def handle_read(self):
 		udp_mess=""
-		timestamp = timeit.default_timer()
+		timestamp = time.time()
 		data, addr = self.recvfrom(2048)
 		numOfValues = len(data) / 8
 		mess=struct.unpack('>' + 'd' * numOfValues, data)
 		for x in range(0, numOfValues):
  			udp_mess = udp_mess+" "+str(mess[x])
- 		diff = timeit.default_timer() - timestamp
+ 		diff = time.time() - timestamp
  		print str(diff)+udp_mess
 
 	# This is called all the time and causes errors if you leave it out.

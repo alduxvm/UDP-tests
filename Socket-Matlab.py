@@ -13,7 +13,7 @@
 
 import socket
 import struct
-import timeit
+import time
 
 #Raspberry pie IP address
 #UDP_IP = "172.30.144.154"
@@ -31,12 +31,12 @@ sock.bind((UDP_IP, UDP_PORT))
 print "System ready on "+str(UDP_IP)
 
 while True:
-	timestamp = timeit.default_timer()
+	timestamp = time.time()
 	data, addr = sock.recvfrom(2048)
 	numOfValues = len(data) / 8
 	mess=struct.unpack('>' + 'd' * numOfValues, data)
 	for x in range(0, numOfValues):
  		udp_mess = udp_mess+" "+str(mess[x])
- 	diff = timeit.default_timer() - timestamp
+ 	diff = time.time() - timestamp
  	print str(diff)+udp_mess
  	udp_mess=""
