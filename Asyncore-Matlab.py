@@ -18,7 +18,9 @@ import timeit
 
 #Raspberry pie IP address
 #UDP_IP = "172.30.144.154"
-UDP_IP = "localhost"
+#Mac IP address
+UDP_IP = "130.209.27.59"
+#UDP_IP = "localhost"
 UDP_PORT = 51001
 
 class AsyncoreServerUDP(asyncore.dispatcher):
@@ -26,6 +28,7 @@ class AsyncoreServerUDP(asyncore.dispatcher):
 		asyncore.dispatcher.__init__(self)
 		self.create_socket(socket.AF_INET, socket.SOCK_DGRAM)
 		self.bind((UDP_IP, UDP_PORT))
+		print "System ready on "+str(UDP_IP)
 	
 	#Even though UDP is connectionless this is called when it binds to a port
 	def handle_connect(self):	
