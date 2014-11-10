@@ -59,7 +59,10 @@ This example makes use of the socketserver module. This module simplifies the ta
 ```
 ##### Results on rpi (just ime...):
 ```
-Under testing... 
+0.0003018
+0.0003149
+0.0002949
+0.0002987
 ```
 
 ## Conclusions
