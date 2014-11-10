@@ -24,34 +24,38 @@ UDP_PORT = 51001
 
 
 class MyUDPHandler(SocketServer.BaseRequestHandler):
-    """
-    This class works similar to the TCP handler class, except that
-    self.request consists of a pair of data and client socket, and since
-    there is no connection the client address must be given explicitly
-    when sending data back via sendto().
-    """
+	"""
+	This class works similar to the TCP handler class, except that
+	self.request consists of a pair of data and client socket, and since
+	there is no connection the client address must be given explicitly
+	when sending data back via sendto().
+	"""
 
-    def handle(self):
-    	udp_mess=""
-    	mess=""
-    	numOfValues=0
-    	timestamp = time.time()
-        data = self.request[0].strip()
-        socket = self.request[1]
-        if data is not None:
-	        numOfValues = len(data) / 8
-	        mess=struct.unpack('>' + 'd' * numOfValues, data)
-	        for x in range(0, numOfValues):
-	        	udp_mess = udp_mess+" "+str(mess[x])
-	        diff = time.time() - timestamp
-	        print str(diff)+udp_mess
-	        udp_mess=""
+	def handle(self):
+		udp_mess=""
+		mess=""
+		numOfValues=0
+		timestamp = time.time()
+		data = self.request[0].strip()
+		socket = self.request[1]
+		try:
+			numOfValues = len(data) / 8
+			mess=struct.unpack('>' + 'd' * numOfValues, data)
+			for x in range(0, numOfValues):
+				udp_mess = udp_mess+" "+str(mess[x])
+			diff = time.time() - timestamp
+			print str(diff)+udp_mess
+			udp_mess=""
+		except:
+			pass
 
 
 if __name__ == "__main__":
-    server = SocketServer.UDPServer((UDP_IP, UDP_PORT), MyUDPHandler)
-    print "System ready on "+str(UDP_IP)
-    server.serve_forever()
-    
+	server = SocketServer.UDPServer((UDP_IP, UDP_PORT), MyUDPHandler)
+	#st = datetime.datetime.fromtimestamp(time.time()).strftime('%Y_%m_%d+%H-%M-%S')+".csv"
+	#file = open("data/"+st, "w")
+	print "System ready on "+str(UDP_IP)
+	server.serve_forever()
+	
 
 
