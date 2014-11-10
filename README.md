@@ -12,7 +12,7 @@ Different ways of communication for the Raspberry Pie and Matlab via UDP. I'm us
 
 This one is the easiest one, using only the module that provides access to the BSD socket interface.
 
-#### Results on mac:
+##### Results on mac:
 ```
 0.00163197517395 0.940350651741 0.0417594239116 0.233919247985 0.128025260911 1.57215267474 0.0832990683
 0.000496864318848 0.940350651741 0.0417594239116 0.233919247985 0.128025260911 1.57215267474 0.0832990683
@@ -22,7 +22,7 @@ This one is the easiest one, using only the module that provides access to the B
 0.000302076339722 0.940290153027 0.0417986474931 0.233891651034 0.128090508358 1.57141204964 0.0836550164245
 0.00249695777893 0.940290153027 0.0417986474931 0.233891651034 0.128090508358 1.57141204964 0.0836550164245
 ```
-#### Results on rpi (just time...):
+##### Results on rpi (just time...):
 ```
 0.000607013
 0.000509977
@@ -34,7 +34,7 @@ This one is the easiest one, using only the module that provides access to the B
 
 This example makes use of the asycore module. This module provides the basic infrastructure for writing asynchronous socket service clients and servers. 
 
-#### Results on mac:
+##### Results on mac:
 ```
 3.50475311279e-05 0.940304279327 0.0418003425002 0.233924299479 0.127610798144 1.57123255258 0.0833177187501
 4.50611114502e-05 0.940304279327 0.0418003425002 0.233924299479 0.127610798144 1.57123255258 0.0833177187501
@@ -44,13 +44,13 @@ This example makes use of the asycore module. This module provides the basic inf
 4.60147857666e-05 0.940304279327 0.0418003425002 0.233924299479 0.127610798144 1.57123255258 0.0833177187501
 5.88893890381e-05 0.940304279327 0.0418003425002 0.233924299479 0.127610798144 1.57123255258 0.0833177187501
 ```
-#### Results on rpi (just ime...):
+##### Results on rpi (just ime...):
 ```
 0.0006768
 0.0006248
 0.0006201
 0.0006239
 ```
-## Conclussions
+## Conclusions
 
 Seems faster communication using the asyncore module on the mac, on the rpi is fairly similar, is just that the time seems more constant on the asyncore one.
